@@ -1,6 +1,17 @@
 .metadata
+
 /Nucleo_Blink/*
+/uart_transmit/*
+
 !/Nucleo_Blink/Core
+!/uart_transmit/Core
+
 /Nucleo_Blink/Core/*
 !/Nucleo_Blink/Core/Src
+
+/uart_transmit/Core/*
+!/uart_transmit/Core/Src
+
+
+
 
