@@ -1,2 +1,6 @@
-/**
+.metadata
+/Nucleo_Blink/*
+!/Nucleo_Blink/Core
+/Nucleo_Blink/Core/*
+!/Nucleo_Blink/Core/Src
 
