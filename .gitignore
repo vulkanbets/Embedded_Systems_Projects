@@ -2,16 +2,24 @@
 
 /Nucleo_Blink/*
 /uart_transmit/*
+/baremetal_blink/*
+
 
 !/Nucleo_Blink/Core
 !/uart_transmit/Core
+!/baremetal_blink/Core
+
 
 /Nucleo_Blink/Core/*
 !/Nucleo_Blink/Core/Src
 
+
 /uart_transmit/Core/*
 !/uart_transmit/Core/Src
 
+
+/baremetal_blink/Core/*
+!/baremetal_blink/Core/Src
 
 
 
