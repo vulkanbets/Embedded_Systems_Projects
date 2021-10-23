@@ -22,5 +22,6 @@
 /baremetal_blink/Core/*
 !/baremetal_blink/Core/Src
 
+/platformio/toggle_led/*/README
 
 
