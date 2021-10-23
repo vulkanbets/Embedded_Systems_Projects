@@ -27,4 +27,7 @@
 /platformio/timers/systic_timer_blink_led/blink_systick/*/README
 
 
+platformio/uart_transmit/*/README
+
+
 
