@@ -4,13 +4,15 @@
 
 int main(void)
 {
-    USART2_init();          /* initialize USART2 */
+    USART2_init(); /* initialize USART2 */
 
-    while(1)                /* Loop forever */
+    // Super loop
+    while(1)
     {
         USART2_write('Y');
         USART2_write('e');
         USART2_write('s');
-        my_delay(628);
+        USART2_write('\n');
+        my_delay(700);
     }
 }

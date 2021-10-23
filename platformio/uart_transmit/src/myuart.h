@@ -14,6 +14,7 @@
 void USART2_init(void)
 {
     RCC->AHB1ENR |= 1;          /* Enable GPIOA clock */
+    
     RCC->APB1ENR |= 0x20000;    /* Enable USART2 clock */
 
     /* Configure PA2 for USART2_TX */
