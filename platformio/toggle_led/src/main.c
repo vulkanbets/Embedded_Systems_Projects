@@ -1,11 +1,11 @@
 #include "stm32f4xx.h"
 
-void mydelay(int n)
+/* 16 MHz SYSCLK */
+void delayMs(int n)
 {
+    int i;
     for (; n > 0; n--)
-    {
-        __ASM volatile("NOP");
-    }
+        for (i = 0; i < 3195; i++) __NOP();
 }
 
 int main(void)
@@ -18,9 +18,8 @@ int main(void)
     while(1)
     {
         GPIOA->ODR |=  0x00000020;  /* turn on LED */
-        mydelay(100000);
+        delayMs(700);
         GPIOA->ODR &= ~0x00000020;  /* turn off LED */
-        mydelay(100000);
+        delayMs(700);
     }
 }
-
