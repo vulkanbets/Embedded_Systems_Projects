@@ -1,6 +1,6 @@
 #include "stm32f4xx.h"
 
-/* 16 MHz SYSCLK */
+// Toggle LED once per second
 void delayMs(int n)
 {
     int i;
@@ -18,8 +18,8 @@ int main(void)
     while(1)
     {
         GPIOA->ODR |=  0x00000020;  /* turn on LED */
-        delayMs(700);
+        delayMs(628);
         GPIOA->ODR &= ~0x00000020;  /* turn off LED */
-        delayMs(700);
+        delayMs(628);
     }
 }
