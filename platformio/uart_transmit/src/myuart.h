@@ -34,7 +34,7 @@ void USART2_init(void)
 /* Write a character to USART2 */
 void USART2_write(int ch)
 {
-    while (!(USART2->SR & 0x0080)) {}   // wait until Tx buffer empty
+    while ( !(USART2->SR & 0x0080) ) {}   // wait until Tx buffer empty
     USART2->DR = (ch & 0xFF);
 }
 
