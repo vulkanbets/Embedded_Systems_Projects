@@ -1,13 +1,25 @@
 #include <Arduino.h>
 
-// put your setup code here, to run once:
+int ledPin = 32;
+
 void setup()
 {
-  ;
+    // Set LED as output
+    pinMode(ledPin, OUTPUT);
+    
+    // Serial monitor setup
+    Serial.begin(115200);
 }
 
-// put your main code here, to run repeatedly:
 void loop()
 {
-  ;
+    Serial.println("LED ON!");
+    digitalWrite(ledPin, HIGH);
+    
+    delay(1000);
+    
+    Serial.println("LED OFF!");
+    digitalWrite(ledPin, LOW);
+    
+    delay(1000);
 }

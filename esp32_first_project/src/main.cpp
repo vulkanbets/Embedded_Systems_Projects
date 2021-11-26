@@ -1,17 +1,25 @@
 #include <Arduino.h>
 
-const int ledPin = 34;
+int ledPin = 32;
 
 void setup()
 {
-  // setup pin 5 as a digital output pin
-  pinMode(ledPin, OUTPUT);
+    // Set LED as output
+    pinMode(ledPin, OUTPUT);
+    
+    // Serial monitor setup
+    Serial.begin(115200);
 }
 
 void loop()
 {
-  digitalWrite(ledPin, HIGH);	  // turn on the LED
-  delay(1000);	                // wait for half a second or 500 milliseconds
-  digitalWrite(ledPin, LOW);	  // turn off the LED
-  delay(1000);	                // wait for half a second or 500 milliseconds
+    Serial.println("LED ON!");
+    digitalWrite(ledPin, HIGH);
+    
+    delay(1000);
+    
+    Serial.println("LED OFF!");
+    digitalWrite(ledPin, LOW);
+    
+    delay(1000);
 }
