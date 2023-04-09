@@ -1,29 +1,29 @@
 #include <Arduino.h>
 
+char spiMessageSent[8192];  // Global Char buffer for storing received SPI messages
+
 void setup()
 {
-  // initialize digital pin GPIO2 as an output.
-  pinMode(GPIO_NUM_2, OUTPUT);
-  
   // Initialize Serial communication at 9600 BAUD
   Serial.begin(9600);
 }
 
-// Char buffer for sending messages
-char spiMessageSent[4096];
-
 void loop()
 {
-  digitalWrite(GPIO_NUM_2, HIGH); // turn the LED on (HIGH is the voltage level)
-
   // Write string message to char buffer and add "NULL" byte terminator
-  strncpy( spiMessageSent, "ESP32 Serial Monitor Message Sent Successfully!\n\0", sizeof(spiMessageSent) );
+  strncpy( spiMessageSent, "ESP32 Serial Monitor Message Sent Successfully!\n\0\0", sizeof(spiMessageSent) );
 
-  // Send Serial Monitor message
-  Serial.print(spiMessageSent);
-  
-  delay(1000); // wait for a half-second
+  // If anything has been written to the buffer; Send Serial Monitor message
+  if( spiMessageSent[0] != '\0' && spiMessageSent[1] != '\0' )
+  {
+    Serial.print(spiMessageSent);
+  }
 
-  digitalWrite(GPIO_NUM_2, LOW); // turn the LED off by making the voltage LOW
-  delay(1000); // wait for a half-second
+  // My way of Resetting the buffer to null (efficiently) without using memset, which
+  // might be computationally expensive on the 32-bit RISC based Xtensa LX7 ESP32 CPU
+  spiMessageSent[0] = '\0';
+  spiMessageSent[1] = '\0';
+  spiMessageSent[2] = '\0';
+
+  delay(1000); // wait for a Second
 }
