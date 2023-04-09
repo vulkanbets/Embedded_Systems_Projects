@@ -1,19 +1,29 @@
 #include <Arduino.h>
 
-// Set LED_BUILTIN if undefined or not pin 13
-#define LED_BUILTIN 2
-
 void setup()
 {
-  // initialize digital pin LED_BUILTIN as an output.
-  pinMode(LED_BUILTIN, OUTPUT);
+  // initialize digital pin GPIO2 as an output.
+  pinMode(GPIO_NUM_2, OUTPUT);
+  
+  // Initialize Serial communication at 9600 BAUD
+  Serial.begin(9600);
 }
+
+// Char buffer for sending messages
+char spiMessageSent[4096];
 
 void loop()
 {
-  digitalWrite(LED_BUILTIN, HIGH); // turn the LED on (HIGH is the voltage level)
-  delay(500); // wait for a half-second
+  digitalWrite(GPIO_NUM_2, HIGH); // turn the LED on (HIGH is the voltage level)
 
-  digitalWrite(LED_BUILTIN, LOW); // turn the LED off by making the voltage LOW
-  delay(500); // wait for a half-second
+  // Write string message to char buffer and add "NULL" byte terminator
+  strncpy( spiMessageSent, "ESP32 Serial Monitor Message Sent Successfully!\n\0", sizeof(spiMessageSent) );
+
+  // Send Serial Monitor message
+  Serial.print(spiMessageSent);
+  
+  delay(1000); // wait for a half-second
+
+  digitalWrite(GPIO_NUM_2, LOW); // turn the LED off by making the voltage LOW
+  delay(1000); // wait for a half-second
 }
