@@ -1,0 +1,13 @@
+
+
+.program square_wave
+    set pins, 1                     ; Set the output high
+    mov x, osr                      ; Move the delay value into the X register
+    label_loop_high:
+        jmp x--, label_loop_high    ; Decrement X and repeat until X reaches 0
+    set pins, 0                     ; Set the output low
+    mov x, osr
+    label_loop_low:
+        jmp x--, label_loop_low     ; Decrement X and repeat until X reaches 0
+.wrap
+
