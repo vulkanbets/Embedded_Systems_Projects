@@ -28,13 +28,13 @@ void SetUpPinPwm()
   pwm_set_chan_level(slice_num, pwm_gpio_to_channel(pwm_pin), level);
 }
 
-void RunPinPwm()
+void StartPwmSckClock()
 {
   gpio_set_function(pwm_pin, GPIO_FUNC_PWM);  // Configure the PWM signal
   pwm_set_enabled(slice_num, true);   // <-- Activate PWM Signal on PIN "pwm_pin"
 }
 
-void SetPwmPinHigh()
+void ResetPwmSckClock()
 {
   pinMode(pwm_pin, OUTPUT);     // Set pwm_pin to digital pin & as an output.
   digitalWrite(pwm_pin, HIGH);  // Set the pwm_pin to HIGH. SCK should Idle on High.
