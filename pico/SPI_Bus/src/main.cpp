@@ -27,20 +27,22 @@ void setup()
 {
   SetMemoryToNull(spiMessageBuffer, SPI_FRAME_LENGTH);
 
-  // Safer: Copy the string literal into the buffer
+  // strncpy() Safer: Copy the string literal into the buffer
   strncpy(spiMessageBuffer, spi_Message, sizeof(spiMessageBuffer) - 1);
 
   // Manually null-terminate the string if strncpy didn't do it
   spiMessageBuffer[sizeof(spiMessageBuffer) - 1] = '\0';
 
-  // Set chp_select_pin & data_pin pins as an outputs.
+  // Set chp_select_pin & data_pin & mosi_pin pins as an outputs.
   pinMode(chp_select_pin, OUTPUT);
   pinMode(data_pin, OUTPUT);
+  pinMode(mosi_pin, OUTPUT);
 
-  // Set the chp_select_pin & data_pin to HIGH.
-  // Active Low chip select pin.  Data pin idles on HIGH
+  // Set the chp_select_pin & data_pin & mosi_pin to HIGH.
+  // Active Low chip select pin.  Data pin idles on HIGH.  MOSI pin idles on HIGH.
   digitalWrite(chp_select_pin, HIGH);
   digitalWrite(data_pin, HIGH);
+  digitalWrite(mosi_pin, HIGH);
 
   SetUpPinPwm();    // Set up all initial register values that the SCK PWM uses
   ResetPwmSckClock();  // Set SCK PWM Pin to Default (HIGH)
@@ -48,15 +50,15 @@ void setup()
 
 void loop()
 {
-  delay(1);
-
+  delayMicroseconds(200);
+  
   // Set the chp_select_pin to LOW. BEGIN sending serial data
   digitalWrite(chp_select_pin, LOW);
 
   // Start SCK Clock ticks on the pwm line (Pin 14)
   StartPwmSckClock();
 
-  BroadcastSpiTransmission(spiMessageBuffer, SPI_FRAME_LENGTH);
+  SendSpiByte();
 
   ResetPwmSckClock(); // <-- Reset PWM pin to HIGH, Default is HIGH
 

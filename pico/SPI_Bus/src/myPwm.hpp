@@ -36,8 +36,10 @@ void StartPwmSckClock()
 
 void ResetPwmSckClock()
 {
-  pinMode(pwm_pin, OUTPUT);     // Set pwm_pin to digital pin & as an output.
-  digitalWrite(pwm_pin, HIGH);  // Set the pwm_pin to HIGH. SCK should Idle on High.
+  delayMicroseconds(1);
+  pwm_set_enabled(slice_num, false);   // De-activate PWM Signal on PIN "pwm_pin"
+  pinMode(pwm_pin, OUTPUT);     // <-- Set pwm_pin to digital pin & as an output.
+  digitalWrite(pwm_pin, HIGH);  // <-- Set the pwm_pin to HIGH. SCK should Idle on High.
 }
 
 #endif // MYPWM_HPP
