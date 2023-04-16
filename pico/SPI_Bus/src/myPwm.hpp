@@ -26,20 +26,10 @@ void SetUpPinPwm()
   // Set the PWM duty cycle
   pwm_set_wrap(slice_num, wrap_value);
   pwm_set_chan_level(slice_num, pwm_gpio_to_channel(pwm_pin), level);
-}
 
-void StartPwmSckClock()
-{
   gpio_set_function(pwm_pin, GPIO_FUNC_PWM);  // Configure the PWM signal
-  pwm_set_enabled(slice_num, true);   // <-- Activate PWM Signal on PIN "pwm_pin"
-}
-
-void ResetPwmSckClock()
-{
-  delayMicroseconds(1);
+  
   pwm_set_enabled(slice_num, false);   // De-activate PWM Signal on PIN "pwm_pin"
-  pinMode(pwm_pin, OUTPUT);     // <-- Set pwm_pin to digital pin & as an output.
-  digitalWrite(pwm_pin, HIGH);  // <-- Set the pwm_pin to HIGH. SCK should Idle on High.
 }
 
 #endif // MYPWM_HPP
