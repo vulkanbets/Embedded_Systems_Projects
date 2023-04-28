@@ -36,7 +36,10 @@ platformio/uart_transmit_interrupt/*/README
 platformio/spi_accelerometer/*/README
 
 
-
-
-
+/basys3/**
+!basys3/project_1/
+!/basys3/project_1/project_1.srcs/
+!/basys3/project_1/project_1.srcs/constrs_1/
+!/basys3/project_1/project_1.srcs/constrs_1/new/
+!/basys3/project_1/project_1.srcs/constrs_1/new/*.xdc
 
