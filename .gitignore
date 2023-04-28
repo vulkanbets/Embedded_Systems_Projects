@@ -43,3 +43,8 @@ platformio/spi_accelerometer/*/README
 !/basys3/project_1/project_1.srcs/constrs_1/new/
 !/basys3/project_1/project_1.srcs/constrs_1/new/*.xdc
 
+!basys3/constraint_file/
+!/basys3/constraint_file/constraint_file.srcs/
+!/basys3/constraint_file/constraint_file.srcs/constrs_1/
+!/basys3/constraint_file/constraint_file.srcs/constrs_1/new/
+!/basys3/constraint_file/constraint_file.srcs/constrs_1/new/*.xdc
