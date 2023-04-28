@@ -44,10 +44,8 @@ platformio/spi_accelerometer/*/README
 !/basys3/constraint_file/constraint_file.srcs/constrs_1/new/
 !/basys3/constraint_file/constraint_file.srcs/constrs_1/new/*.xdc
 
-!basys3/clock_generation/
-!basys3/clock_generation/README.md
-!basys3/clock_generation/block_Diagram.png
+!/basys3/clock_generation/
+!/basys3/clock_generation/README.md
+!/basys3/clock_generation/block_Diagram.png
 !/basys3/clock_generation/clock_generation.srcs/
-!/basys3/clock_generation/clock_generation.srcs/constrs_1/
-!/basys3/clock_generation/clock_generation.srcs/constrs_1/new/
-!/basys3/clock_generation/clock_generation.srcs/constrs_1/new/*.xdc
+!/basys3/clock_generation/clock_generation.srcs/**
