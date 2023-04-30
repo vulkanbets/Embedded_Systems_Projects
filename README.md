@@ -1,1 +1,1 @@
-# FPGA, μController & Embedded Systems
+# FPGA, μ-Controller & Embedded Systems

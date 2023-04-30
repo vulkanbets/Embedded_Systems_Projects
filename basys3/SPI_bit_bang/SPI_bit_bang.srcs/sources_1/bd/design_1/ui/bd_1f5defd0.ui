@@ -1,0 +1,41 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-317,-186",
+   "ExpandedHierarchyInLayout":"",
+   "comment_0":"5 MHz",
+   "comment_1":"5 MHz",
+   "commentid":"comment_1|comment_0|",
+   "fillcolor_comment_0":"",
+   "font_comment_0":"10",
+   "font_comment_1":"10",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port port-id_sys_clock -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
+preplace port port-id_reset -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace port port-id_SCK -pg 1 -lvl 4 -x 640 -y 60 -defaultsOSRD
+preplace port port-id_CS -pg 1 -lvl 4 -x 640 -y 80 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 120 -y 70 -defaultsOSRD
+preplace inst spi_master_0 -pg 1 -lvl 3 -x 520 -y 70 -defaultsOSRD
+preplace inst spi_controller_0 -pg 1 -lvl 2 -x 320 -y 150 -defaultsOSRD
+preplace netloc clk_wiz_0_clk_out1 1 1 2 220 60 N
+preplace netloc spi_controller_0_trasnmit 1 2 1 420 80n
+preplace netloc spi_master_0_CS 1 3 1 NJ 80
+preplace netloc spi_master_0_SCK 1 3 1 NJ 60
+preplace netloc sys_clock_1 1 0 1 NJ 80
+preplace netloc reset_1 1 0 1 NJ 60
+preplace cgraphic comment_1 place bot 168 -45 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_0 place top 308 30 textcolor 4 linecolor 3 linewidth 2
+levelinfo -pg 1 0 120 320 520 640
+pagesize -pg 1 -db -bbox -sgen -120 0 720 210
+",
+   "linecolor_comment_0":"",
+   "textcolor_comment_0":""
+}
+{
+   """da_board_cnt""":"2"
+}
+{
+   "/comment_1":"comment_1",
+   "/comment_2":"comment_0"
+}

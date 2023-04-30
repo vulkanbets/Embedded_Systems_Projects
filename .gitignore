@@ -49,3 +49,10 @@ platformio/spi_accelerometer/*/README
 !/basys3/clock_generation/block_Diagram.png
 !/basys3/clock_generation/clock_generation.srcs/
 !/basys3/clock_generation/clock_generation.srcs/**
+
+!/basys3/SPI_bit_bang/
+!/basys3/SPI_bit_bang/README.md
+!/basys3/SPI_bit_bang/block_Diagram.png
+!/basys3/SPI_bit_bang/SPI_bit_bang.srcs/
+!/basys3/SPI_bit_bang/SPI_bit_bang.srcs/**
+*.dcp
