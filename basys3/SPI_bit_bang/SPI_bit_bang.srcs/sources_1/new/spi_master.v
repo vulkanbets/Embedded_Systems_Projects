@@ -6,7 +6,9 @@ module spi_master
 (
   input wire clk,
   input wire transmit,
+  input wire [7:0] byte_To_Send,
   output reg SCK,
+  output reg MOSI,
   output reg CS
 );
 
@@ -16,12 +18,18 @@ parameter SEND  = 2'b01;
 parameter DELAY = 2'b11;
 parameter RECV  = 2'b10;
 
+// Initializations
+initial MOSI = 1;
+
 // State variables
 reg [1:0] current_state = IDLE;
 reg [1:0] next_state = IDLE;
 
 // Counter variable to send 8-bits
 reg [2:0] send_recv_counter = 3'b111;
+
+// Index into the current being sent the MOSI Bus
+reg [2:0] send_Index = 7;
 
 // Counter variable for delay between SEND & RECV states
 reg [2:0] delay_counter = 2;
@@ -62,6 +70,17 @@ begin
       CS_Delay <= 0;
       delay_counter <= 2;
     end
+end
+
+// Set the send index variable
+always @ (negedge SCK)
+begin
+  if (current_state == SEND) begin
+    send_Index <= send_Index - 1;
+  end
+  else begin
+    send_Index <= 7;
+  end
 end
 
 
@@ -112,26 +131,31 @@ begin
         CS <= 1;
       end
       SCK <= 1;
+      MOSI <= 1;
     end
 
     SEND: begin
       CS <= 0;
       SCK <= clk;
+      MOSI <= byte_To_Send[send_Index];
     end
 
     DELAY: begin
       CS <= 0;
       SCK <= 1;
+      MOSI <= 1;
     end
 
     RECV: begin
       CS <= 0;
       SCK <= clk;
+      MOSI <= 1;
     end
 
     default: begin
       CS <= 1;
       SCK <= 1;
+      MOSI <= 1;
     end
 
   endcase

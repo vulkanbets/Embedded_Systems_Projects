@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x3D89DF14BBE727F7",
+      "boundary_crc": "0xFF38F7E429ED6256",
       "device": "xc7a35tcpg236-1",
       "gen_directory": "../../../../SPI_bit_bang.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -57,6 +57,9 @@
         "direction": "O"
       },
       "CS": {
+        "direction": "O"
+      },
+      "MOSI": {
         "direction": "O"
       }
     },
@@ -145,6 +148,11 @@
           },
           "trasnmit": {
             "direction": "O"
+          },
+          "byte_To_Send": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
           }
         }
       },
@@ -180,7 +188,15 @@
           "transmit": {
             "direction": "I"
           },
+          "byte_To_Send": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
           "SCK": {
+            "direction": "O"
+          },
+          "MOSI": {
             "direction": "O"
           },
           "CS": {
@@ -203,6 +219,12 @@
           "clk_wiz_0/reset"
         ]
       },
+      "spi_controller_0_byte_To_Send": {
+        "ports": [
+          "spi_controller_0/byte_To_Send",
+          "spi_master_0/byte_To_Send"
+        ]
+      },
       "spi_controller_0_trasnmit": {
         "ports": [
           "spi_controller_0/trasnmit",
@@ -213,6 +235,12 @@
         "ports": [
           "spi_master_0/CS",
           "CS"
+        ]
+      },
+      "spi_master_0_MOSI": {
+        "ports": [
+          "spi_master_0/MOSI",
+          "MOSI"
         ]
       },
       "spi_master_0_SCK": {

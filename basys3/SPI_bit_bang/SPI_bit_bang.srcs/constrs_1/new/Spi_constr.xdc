@@ -1,8 +1,9 @@
 
 
 ##Pmod Header JC
-set_property -dict { PACKAGE_PIN K17   IOSTANDARD LVCMOS33 } [get_ports {SCK}];#Sch name = JC1
-set_property -dict { PACKAGE_PIN M18   IOSTANDARD LVCMOS33 } [get_ports {CS}];#Sch name = JC2
+set_property -dict { PACKAGE_PIN K17   IOSTANDARD LVCMOS33 } [get_ports {SCK}]; #Sch name = JC1
+set_property -dict { PACKAGE_PIN M18   IOSTANDARD LVCMOS33 } [get_ports {CS}];  #Sch name = JC2
+set_property -dict { PACKAGE_PIN N17   IOSTANDARD LVCMOS33 } [get_ports {MOSI}];#Sch name = JC3
 
 
 ## Configuration options, can be used for all designs
