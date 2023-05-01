@@ -12,8 +12,8 @@
     },
     "design_tree": {
       "clk_wiz_0": "",
-      "spi_master_0": "",
-      "spi_controller_0": ""
+      "spi_controller_0": "",
+      "spi_master_0": ""
     },
     "ports": {
       "sys_clock": {
@@ -114,6 +114,40 @@
           }
         }
       },
+      "spi_controller_0": {
+        "vlnv": "xilinx.com:module_ref:spi_controller:1.0",
+        "xci_name": "design_1_spi_controller_0_0",
+        "xci_path": "ip/design_1_spi_controller_0_0/design_1_spi_controller_0_0.xci",
+        "inst_hier_path": "spi_controller_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "spi_controller",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "5000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "trasnmit": {
+            "direction": "O"
+          }
+        }
+      },
       "spi_master_0": {
         "vlnv": "xilinx.com:module_ref:spi_master:1.0",
         "xci_name": "design_1_spi_master_0_1",
@@ -153,48 +187,14 @@
             "direction": "O"
           }
         }
-      },
-      "spi_controller_0": {
-        "vlnv": "xilinx.com:module_ref:spi_controller:1.0",
-        "xci_name": "design_1_spi_controller_0_0",
-        "xci_path": "ip/design_1_spi_controller_0_0/design_1_spi_controller_0_0.xci",
-        "inst_hier_path": "spi_controller_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "spi_controller",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "5000000",
-                "value_src": "ip_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "ip_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "/clk_wiz_0_clk_out1",
-                "value_src": "ip_prop"
-              }
-            }
-          },
-          "trasnmit": {
-            "direction": "O"
-          }
-        }
       }
     },
     "nets": {
       "clk_wiz_0_clk_out1": {
         "ports": [
           "clk_wiz_0/clk_out1",
-          "spi_master_0/clk",
-          "spi_controller_0/clk"
+          "spi_controller_0/clk",
+          "spi_master_0/clk"
         ]
       },
       "reset_1": {

@@ -11,19 +11,57 @@ module spi_master
 );
 
 // Parameters
-parameter IDLE = 2'b00;
-parameter SEND = 2'b01;
-parameter RECV = 2'b10;
+parameter IDLE  = 2'b00;
+parameter SEND  = 2'b01;
+parameter DELAY = 2'b11;
+parameter RECV  = 2'b10;
 
 // State variables
 reg [1:0] current_state = IDLE;
 reg [1:0] next_state = IDLE;
 
+// Counter variable to send 8-bits
+reg [2:0] send_recv_counter = 3'b111;
 
-// State Register Asynch Reset
-always @(posedge clk)
+// Counter variable for delay between SEND & RECV states
+reg [2:0] delay_counter = 2;
+
+// Delay CS line by 1 clock cycle
+reg CS_Delay = 1;
+
+
+// State Register
+always @ (posedge clk)
 begin
-    current_state <= next_state;
+    if (current_state == IDLE) begin
+      send_recv_counter <= 3'b111;
+      current_state <= next_state;
+      if (CS_Delay == 0) begin
+        CS_Delay <= 1;
+      end
+    end
+    else if (current_state == DELAY) begin
+      if (delay_counter != 0) begin
+        delay_counter <= delay_counter - 1;
+        current_state <= current_state;
+      end
+      else begin
+        delay_counter <= 2;
+        current_state <= next_state;
+      end
+    end
+    else begin
+      if (send_recv_counter != 0) begin
+        send_recv_counter <= send_recv_counter - 1;
+        current_state <= current_state;
+      end
+      else begin
+        send_recv_counter <= 3'b111;
+        current_state <= next_state;
+      end
+      CS_Delay <= 0;
+      delay_counter <= 2;
+    end
 end
 
 
@@ -31,8 +69,9 @@ end
 always @ (*)
 begin
   case (current_state)
-    IDLE:
-    begin
+
+    // IDLE state next state logic
+    IDLE: begin
       if (transmit == 1) begin
         next_state <= SEND;
       end
@@ -41,48 +80,56 @@ begin
       end
     end
 
-    SEND:
-    begin
+    // SEND state next state logic
+    SEND: begin
+      next_state <= DELAY;
+    end
+
+    // DELAY state next state logic
+    DELAY: begin
       next_state <= RECV;
     end
 
-    RECV:
-    begin
+    // RECV state next state logic
+    RECV: begin
       next_state <= IDLE;
     end
-
-    default: // <-- Default is IDLE (HIGH)
-    begin
-      next_state <= SEND;
-    end
+    
+    // <-- Default state is IDLE (HIGH)
+    default: next_state <= IDLE;
+    
   endcase
 end
 
 
-// Output Logic
+// Output Logic for Moore (FSM) Machine. Output depends only on current state
 always @ (*)
 begin
   case (current_state)
 
-    IDLE:
-    begin
-      CS <= 1;
+    IDLE: begin
+      if (CS_Delay == 1) begin
+        CS <= 1;
+      end
       SCK <= 1;
     end
 
-    SEND:
-    begin
+    SEND: begin
       CS <= 0;
       SCK <= clk;
     end
 
-    RECV:
-    begin
+    DELAY: begin
+      CS <= 0;
+      SCK <= 1;
+    end
+
+    RECV: begin
       CS <= 0;
       SCK <= clk;
     end
-    default:
-    begin
+
+    default: begin
       CS <= 1;
       SCK <= 1;
     end

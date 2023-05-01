@@ -10,12 +10,14 @@
       "component_parameters": {
         "IDLE": [ { "value": "\"00\"", "resolve_type": "user", "format": "bitString", "usage": "all" } ],
         "SEND": [ { "value": "\"01\"", "resolve_type": "user", "format": "bitString", "usage": "all" } ],
+        "DELAY": [ { "value": "\"11\"", "resolve_type": "user", "format": "bitString", "usage": "all" } ],
         "RECV": [ { "value": "\"10\"", "resolve_type": "user", "format": "bitString", "usage": "all" } ],
         "Component_Name": [ { "value": "design_1_spi_master_0_1", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
         "IDLE": [ { "value": "\"00\"", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
         "SEND": [ { "value": "\"01\"", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
+        "DELAY": [ { "value": "\"11\"", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
         "RECV": [ { "value": "\"10\"", "resolve_type": "generated", "format": "bitString", "usage": "all" } ]
       },
       "project_parameters": {
