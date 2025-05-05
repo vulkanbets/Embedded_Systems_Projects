@@ -91,3 +91,20 @@ IDE.log
 
 !/CoraZ7/The Zynq Book ebook.pdf
 !/CoraZ7/The_Zynq_Book_Tutorials_Aug_15_2015.pdf
+!/CoraZ7/Cora-Z7-10-Master.xdc
+
+
+!CoraZ7/vivado/pmod_blinky/
+!CoraZ7/vivado/pmod_blinky/pmod_blinky.srcs/
+!CoraZ7/vivado/pmod_blinky/pmod_blinky.srcs/sources_1/
+!CoraZ7/vivado/pmod_blinky/pmod_blinky.srcs/sources_1/new/
+!CoraZ7/vivado/pmod_blinky/pmod_blinky.srcs/sources_1/new/**
+
+
+!CoraZ7/vivado/pmod_blinky/
+!CoraZ7/vivado/pmod_blinky/pmod_blinky.srcs/
+!CoraZ7/vivado/pmod_blinky/pmod_blinky.srcs/constrs_1/
+!CoraZ7/vivado/pmod_blinky/pmod_blinky.srcs/constrs_1/new/
+!CoraZ7/vivado/pmod_blinky/pmod_blinky.srcs/constrs_1/new/**
+
+!CoraZ7/.gitignore
